@@ -72,7 +72,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // แสดง dialog ยืนยันก่อนลบทุกครั้ง (Yes/No) ตามที่โจทย์การบ้าน #6 กำหนด
   Future<bool> _confirmDelete(BillingRecordModel record) async {
     final result = await showDialog<bool>(
       context: context,
@@ -99,7 +98,6 @@ class _HomePageState extends State<HomePage> {
     return result ?? false;
   }
 
-  // ไปหน้าฟอร์มแก้ไข พร้อมส่งค่าเดิมของรายการที่เลือกไปแสดงในฟอร์ม
   void _goToEditForm(BillingRecordModel record) {
     Navigator.push(
       context,
@@ -110,7 +108,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Build the ListView for displaying billing records
   Widget _buildListView(AsyncSnapshot snapshot) {
     billingItems.clear();
     for (var doc in snapshot.data!.docs) {
@@ -125,11 +122,10 @@ class _HomePageState extends State<HomePage> {
           paidStatus: doc.get('paidStatus'),
           referenceId: doc.id,
         ),
-      ); // Update the snapshot data with the model
+      );
     }
-    // Sort the billing items by month
+
     billingItems.sort((a, b) {
-      // ใช้ DateFormat จากแพ็กเกจ intl เพื่อแปลง String เป็น DateTime
       DateFormat format = DateFormat("MMMM yyyy");
 
       DateTime dateA = format.parse(a.month);
@@ -152,7 +148,6 @@ class _HomePageState extends State<HomePage> {
         return Slidable(
           key: ValueKey(record.referenceId),
 
-          // ---- Swipe จากซ้ายไปขวา -> โผล่ไอคอนแก้ไข ----
           startActionPane: ActionPane(
             motion: const DrawerMotion(),
             extentRatio: 0.25,
@@ -167,7 +162,6 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
 
-          // ---- Swipe จากขวาไปซ้าย -> โผล่ไอคอนลบ ----
           endActionPane: ActionPane(
             motion: const DrawerMotion(),
             extentRatio: 0.25,
@@ -200,7 +194,6 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             subtitle: Text(subtitle, style: TextStyle(fontSize: 14)),
-            // แตะที่รายการ (จากหน้าไปหลัง) ก็เปิดฟอร์มแก้ไขได้เช่นกัน ตามที่โจทย์ระบุ
             onTap: () => _goToEditForm(record),
           ),
         );
