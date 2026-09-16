@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "135822055288",
+    "project_id": "electricity-payment-d3bf5",
+    "storage_bucket": "electricity-payment-d3bf5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135822055288:android:10dd393ef0fa4be7751a8d",
+        "android_client_info": {
+          "package_name": "com.example.electricity_payment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYwpwPMcnFhjELRU2KMzamPymhgXdJwPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
